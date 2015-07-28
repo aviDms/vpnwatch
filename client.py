@@ -102,6 +102,11 @@ class VpnWatch():
                 return True
 
     @staticmethod
+    def send_notif(title, msg):
+        subprocess.Popen(['notify-send', '-u', 'critical', title, msg])
+        return
+
+    @staticmethod
     def kill_process(pid):
         if os.path.exists(os.path.join('/proc', str(pid))):
             os.kill(int(pid), signal.SIGQUIT)
